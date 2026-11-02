@@ -1,0 +1,4 @@
+public/video/*.mkv
+.git
+node_modules
+.next
