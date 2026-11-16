@@ -96,7 +96,7 @@ export default function Home() {
     <div className="site-content" inert={introPlaying}>
     <a className="skip-link" href="#work">Skip to selected work</a>
     <section className="hero" aria-label="Introduction">
-      <div className="hero-photo" role="img" aria-label="Editorial portrait placeholder; to be replaced with Azra’s photograph" />
+      <div className="hero-photo" role="img" aria-label="Portrait of Azra Ahmad Algifari" />
       <header className="nav">
         <a className="wordmark" href="#top" aria-label="Azra Ahmad home"><span className="copyright">©</span><span>Azra Ahmad</span></a>
         <nav className="desktop-nav" aria-label="Main navigation"><a href="#work">Work<span className="nav-dot" /></a><a href="#about">About<span className="nav-dot" /></a><a href="#contact">Contact <span aria-hidden="true">↗</span><span className="nav-dot" /></a></nav>
