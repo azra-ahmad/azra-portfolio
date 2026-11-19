@@ -87,15 +87,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid #5c64aa; outline-offs
 .monitor-foot { width: 35%; height: 9px; background: linear-gradient(#fafbf6, #d8ded2); box-shadow: 5px 7px 12px #66705c22; }
 @media (max-width: 760px) {
   .project:has(.project-video-cover) { grid-template-columns: 1fr; gap: 30px; padding: 10px 0 30px; }
-  .project:has(.project-video-cover) .project-meta { grid-column: 1; grid-row: 1; gap: 14px; }
-  .project:has(.project-video-cover) .project-art { grid-column: 1; grid-row: 2; aspect-ratio: 1.2; }
+  .project:has(.project-video-cover) .project-meta { grid-column: 1; grid-row: 2; gap: 14px; }
+  .project:has(.project-video-cover) .project-art { grid-column: 1; grid-row: 1; aspect-ratio: 1.2; }
   .project:has(.project-video-cover) .project-meta h2 { font-size: 42px; }
   .featured-description { font-size: 14px; margin: 3px 0; }
   .project-video-cover { padding: 9% 7%; }
   .monitor-stand { height: 30px; }.monitor-chin { height: 10px; }
   .project.project-reversed:has(.project-video-cover) { grid-template-columns: 1fr; }
-  .project.project-reversed:has(.project-video-cover) .project-meta { grid-column: 1; grid-row: 1; }
-  .project.project-reversed:has(.project-video-cover) .project-art { grid-column: 1; grid-row: 2; }
+  .project.project-reversed:has(.project-video-cover) .project-meta { grid-column: 1; grid-row: 2; }
+  .project.project-reversed:has(.project-video-cover) .project-art { grid-column: 1; grid-row: 1; }
 }
 .fotomotif { background: #dad7cf; color: #32362e; }
 .raffseal { background: #34453f; color: #f3efe3; }
@@ -225,4 +225,14 @@ button:focus-visible, a:focus-visible { outline: 2px solid #5c64aa; outline-offs
   .project-grid > .project-reversed { grid-template-columns: 1.35fr .85fr; }
   .project-grid > .project-reversed > .project-art { grid-column: 1; grid-row: 1; }
   .project-grid > .project-reversed > .project-meta { grid-column: 2; grid-row: 1; }
+}
+
+@media (max-width: 760px) {
+  .menu-toggle { display: grid; align-content: center; justify-items: center; gap: 5px; width: 44px; height: 44px; padding: 0; border-radius: 50%; background: #292c27; color: #fff; }
+  .menu-toggle span { width: 19px; height: 1px; background: currentColor; }
+  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+  .project .featured-label { display: none; }
+  .project .project-meta > h2 { order: -2; }
+  .project .featured-description { order: -1; }
 }

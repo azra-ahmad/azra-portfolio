@@ -15,6 +15,26 @@ export default function Home() {
   const root = useRef<HTMLElement>(null);
   const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const close = () => setMenuOpen(false);
+    const key = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { close(); menuButton.current?.focus(); }
+    };
+    const outside = (event: PointerEvent) => {
+      if (event.target instanceof Element && !event.target.closest("#mobile-nav, .menu-toggle")) close();
+    };
+    desktop.addEventListener("change", close);
+    document.addEventListener("keydown", key);
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      desktop.removeEventListener("change", close);
+      document.removeEventListener("keydown", key);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, [menuOpen]);
   const closeButton = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLElement>(null);
   const opening = useRef<gsap.core.Timeline | null>(null);
@@ -100,7 +120,7 @@ export default function Home() {
       <header className="nav">
         <a className="wordmark" href="#top" aria-label="Azra Ahmad home"><span className="copyright">©</span><span>Azra Ahmad</span></a>
         <nav className="desktop-nav" aria-label="Main navigation"><a href="#work">Work<span className="nav-dot" /></a><a href="#about">About<span className="nav-dot" /></a><a href="#contact">Contact <span aria-hidden="true">↗</span><span className="nav-dot" /></a></nav>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-nav">{menuOpen ? "Close −" : "Menu +"}</button>
+        <button ref={menuButton} className="menu-toggle" aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="mobile-nav"><span /><span /></button>
       </header>
       {menuOpen && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">{["Work", "About", "Contact"].map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item} ↗</a>)}</nav>}
       <h1 className="sr-only">Azra Ahmad Algifari — Personal portfolio</h1>

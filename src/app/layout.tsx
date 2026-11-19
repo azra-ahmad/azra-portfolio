@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Azra Ahmad Algifari — Portfolio",
+  title: "Azra Ahmad Algifari",
   description: "A personal corner of the internet by Azra Ahmad Algifari. Selected work, experiments, and a little about me.",
 };
 
